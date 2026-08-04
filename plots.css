@@ -1,0 +1,376 @@
+/* ===========================================================
+   Keyline Properties — Plots Page Styles (HTML + CSS only)
+   No JavaScript required. Builds on home.css tokens.
+=========================================================== */
+
+/* ---------- CSS-only mobile nav toggle ---------- */
+.nav-check { display: none; }
+
+@media (max-width: 900px) {
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .main-nav a { padding: 14px 24px; border-bottom: 1px solid var(--line); }
+  .nav-check:checked ~ .main-nav { max-height: 400px; }
+}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 35px;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.breadcrumb a { color: #fff; opacity: 0.9; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb svg { width: 15px; height: 15px; opacity: 0.6; }
+.breadcrumb .current { color: var(--amber); }
+
+/* ---------- Page Hero ---------- */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0 100px;
+  background: url("asset/property-hero.webp") center center/cover no-repeat;
+}
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(46,18,69,.82) 0%, rgba(46,18,69,.65) 45%, rgba(46,18,69,.40) 100%);
+  z-index: 1;
+}
+.page-hero-inner { position: relative; z-index: 2; max-width: 620px; padding-top: 20px; }
+.page-hero h1 { color: #fff; font-size: clamp(38px,5vw,56px); line-height: 1.15; margin-bottom: 18px; }
+.page-hero h1 .accent { color: var(--amber); }
+.page-hero p { color: rgba(255,255,255,.92); font-size: 18px; line-height: 1.8; max-width: 560px; }
+.page-hero .rule { width: 90px; height: 4px; margin-top: 28px; background: var(--amber); border-radius: 30px; }
+
+@media (max-width: 768px) {
+  .page-hero { padding: 70px 0; background-position: center; }
+  .page-hero h1 { font-size: 36px; }
+  .page-hero p { font-size: 16px; }
+}
+
+/* ---------- Feature strip ---------- */
+.feature-strip {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  background: var(--white);
+  margin-top: -64px;
+  padding: 30px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 20px;
+  border-right: 1px solid var(--line);
+}
+.feature-item:last-child { border-right: none; }
+.feature-item .why-icon { margin-bottom: 0; width: 46px; height: 46px; flex-shrink: 0; }
+.feature-item .why-icon svg { width: 20px; height: 20px; }
+.feature-item h4 { font-size: 14.5px; font-family: var(--font-body); font-weight: 700; color: var(--ink); }
+.feature-item p { font-size: 12.5px; color: var(--slate); margin-top: 2px; }
+
+@media (max-width: 1080px) {
+  .feature-strip { grid-template-columns: repeat(2, 1fr); row-gap: 22px; }
+  .feature-item:nth-child(2n) { border-right: none; }
+  .feature-item { border-right: 1px solid var(--line); }
+}
+@media (max-width: 760px) {
+  .feature-strip { grid-template-columns: 1fr; margin-top: -40px; }
+  .feature-item { border-right: none; padding: 0; }
+  .page-hero { padding-bottom: 70px; }
+}
+
+/* ---------- Toolbar (static, no sort/filter controls) ---------- */
+.listing-toolbar { margin: 44px 0 26px; }
+.results-count { font-size: 14.5px; color: var(--slate); }
+.results-count strong { color: var(--ink); }
+
+/* ---------- Property Grid ---------- */
+
+.property-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+}
+
+@media (max-width:1080px){
+    .property-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media (max-width:640px){
+    .property-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+
+/* ---------- Property Card ---------- */
+
+.property-card{
+    background:var(--white);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:var(--shadow-sm);
+    transition:.35s ease;
+    border:1px solid rgba(75,31,99,.08);
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+.property-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow-lg);
+}
+
+
+/* ---------- Image ---------- */
+
+.property-media{
+    position:relative;
+    overflow:hidden;
+}
+
+.ph-img{
+    position:relative;
+    width:100%;
+    height:260px;
+    overflow:hidden;
+    background:#f5f5f5;
+    border-bottom:3px solid var(--amber);
+}
+
+.property-image{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+    transition:transform .6s ease;
+}
+
+.property-card:hover .property-image{
+    transform:scale(1.08);
+}
+
+
+/* ---------- Property Tag ---------- */
+
+.property-tag{
+    position:absolute;
+    top:16px;
+    left:16px;
+    background:rgba(255,255,255,.96);
+    color:var(--plum);
+    padding:8px 18px;
+    border-radius:50px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+
+/* ---------- Wishlist ---------- */
+
+.wishlist-btn{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:46px;
+    height:46px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.96);
+    color:var(--plum);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.wishlist-btn svg{
+    width:20px;
+    height:20px;
+}
+
+.wishlist-btn:hover{
+    background:var(--plum);
+    color:#fff;
+}
+
+
+/* ---------- Card Body ---------- */
+
+.property-body{
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.property-body h3{
+    font-size:20px;
+    color:var(--ink);
+    margin-bottom:10px;
+}
+
+
+/* ---------- Location ---------- */
+
+.property-loc,
+.property-meta{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--slate);
+    font-size:14px;
+    margin-bottom:10px;
+    line-height:1.5;
+}
+
+.property-loc svg,
+.property-meta svg{
+    width:16px;
+    height:16px;
+    color:var(--amber-dark);
+    flex-shrink:0;
+}
+
+
+/* ---------- Feature Box ---------- */
+
+.property-features{
+    margin:16px 0 20px;
+    padding:16px;
+    border-radius:14px;
+    background:#faf7fd;
+    border:1px solid rgba(75,31,99,.12);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.property-features p{
+    margin:0;
+    font-size:13px;
+    color:var(--slate);
+    line-height:1.5;
+}
+
+.property-features p:last-child{
+    margin-top:8px;
+    padding-top:10px;
+    border-top:1px solid rgba(75,31,99,.12);
+    color:var(--plum);
+    font-weight:600;
+}
+
+
+/* ---------- Price ---------- */
+
+.property-price{
+    margin-top:auto;
+    margin-bottom:18px;
+}
+
+.property-price strong{
+    display:block;
+    font-size:28px;
+    color:var(--plum);
+    font-family:var(--font-display);
+}
+
+.property-price span{
+    display:block;
+    margin-top:4px;
+    color:var(--slate);
+    font-size:14px;
+}
+
+
+/* ---------- Button ---------- */
+
+.property-body .btn{
+    width:100%;
+    justify-content:center;
+    margin-top:auto;
+}
+/* ---------- Wishlist heart on card ---------- */
+.wishlist-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.wishlist-btn:hover { transform: scale(1.08); }
+.wishlist-btn svg { width: 16px; height: 16px; color: var(--plum-darker); transition: color 0.2s ease, fill 0.2s ease; }
+.wishlist-btn.active svg { color: #E0475B; fill: #E0475B; }
+
+/* ---------- Back to top ---------- */
+.to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--plum);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 40;
+}
+.to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.to-top svg { width: 20px; height: 20px; }
+.to-top:hover { background: var(--plum-darker); }
+
+/* ---------- Empty state (kept for completeness, not shown normally) ---------- */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 70px 20px;
+  color: var(--slate);
+}
