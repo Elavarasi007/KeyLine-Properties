@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Active nav link on load ---------- */
   const navLinks = document.querySelectorAll('.main-nav a');
   navLinks.forEach(link => {
-    if (link.getAttribute('href') === 'home.html' || link.getAttribute('href') === '#home') {
+    if (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#home') {
       link.classList.add('active');
     }
   });
