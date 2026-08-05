@@ -236,6 +236,7 @@ h1, h2, h3, h4 {
 .brand-text-tag {
   width: 100%;
   text-align: center;
+ 
 
   /* Reduced size */
   font-size: 9px;
@@ -244,7 +245,7 @@ h1, h2, h3, h4 {
 
   line-height: 1.2;
   text-transform: uppercase;
-  color: var(--amber-dark);
+  color: black;
 }
 
 /* Navigation */
@@ -283,6 +284,9 @@ h1, h2, h3, h4 {
 
   background: var(--amber);
   transition: width 0.25s ease;
+}
+.main-nav a::after{
+display: none;
 }
 
 .main-nav a:hover::after,
