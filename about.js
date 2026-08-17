@@ -52,3 +52,139 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+document.addEventListener("DOMContentLoaded", function () {
+
+  const slider = document.querySelector(".leadership-slider");
+
+  if (!slider) return;
+
+  const slides = slider.querySelectorAll(".leadership-slide");
+  const dots = slider.querySelectorAll(".slider-dot");
+  const prevBtn = slider.querySelector(".slider-prev");
+  const nextBtn = slider.querySelector(".slider-next");
+
+  let currentIndex = 0;
+  let autoSlide;
+
+  // Auto slide time: 5 seconds
+  const slideInterval = 5000;
+
+
+  /* ---------- Show Slide ---------- */
+
+  function showSlide(index) {
+
+    if (index >= slides.length) {
+      currentIndex = 0;
+    } else if (index < 0) {
+      currentIndex = slides.length - 1;
+    } else {
+      currentIndex = index;
+    }
+
+    slides.forEach((slide, i) => {
+      slide.classList.toggle(
+        "active",
+        i === currentIndex
+      );
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle(
+        "active",
+        i === currentIndex
+      );
+    });
+  }
+
+
+  /* ---------- Next ---------- */
+
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+  }
+
+
+  /* ---------- Previous ---------- */
+
+  function previousSlide() {
+    showSlide(currentIndex - 1);
+  }
+
+
+  /* ---------- Start Auto Slide ---------- */
+
+  function startAutoSlide() {
+
+    clearInterval(autoSlide);
+
+    autoSlide = setInterval(function () {
+      nextSlide();
+    }, slideInterval);
+  }
+
+
+  /* ---------- Next Button ---------- */
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function () {
+
+      nextSlide();
+
+      // Restart timer after manual click
+      startAutoSlide();
+
+    });
+  }
+
+
+  /* ---------- Previous Button ---------- */
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", function () {
+
+      previousSlide();
+
+      // Restart timer after manual click
+      startAutoSlide();
+
+    });
+  }
+
+
+  /* ---------- Dots ---------- */
+
+  dots.forEach(function (dot, index) {
+
+    dot.addEventListener("click", function () {
+
+      showSlide(index);
+
+      // Restart timer
+      startAutoSlide();
+
+    });
+
+  });
+
+
+  /* ---------- Pause on Hover ---------- */
+
+  slider.addEventListener("mouseenter", function () {
+    clearInterval(autoSlide);
+  });
+
+
+  /* ---------- Resume on Mouse Leave ---------- */
+
+  slider.addEventListener("mouseleave", function () {
+    startAutoSlide();
+  });
+
+
+  /* ---------- Start Slider ---------- */
+
+  showSlide(0);
+  startAutoSlide();
+
+});

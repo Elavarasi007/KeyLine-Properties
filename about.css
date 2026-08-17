@@ -115,64 +115,371 @@
 .value-card p { font-size: 12.5px; color: var(--slate); }
 
 /* ---------- Leadership ---------- */
+/* ---------- Leadership ---------- */
 .leadership-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 56px;
   align-items: center;
 }
-.leadership-visual .ph-img {
-  aspect-ratio: 16/11;
-  box-shadow: var(--shadow-md);
+
+/* Leadership Image Slider */
+.leadership-visual {
+  position: relative;
 }
-.leadership-visual .ph-img::after { opacity: 0.5; }
+
+.leadership-visual .ph-img {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* Slider Images */
+.leadership-slider .leadership-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.03);
+
+  transition:
+    opacity 0.8s ease,
+    transform 1.2s cubic-bezier(.22, .61, .36, 1),
+    visibility 0.8s ease;
+
+  z-index: 1;
+}
+
+/* First image keeps the container height */
+.leadership-slider .leadership-slide:first-child {
+  position: relative;
+}
+
+/* Active Image */
+.leadership-slider .leadership-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 2;
+}
+
+
+/* Existing Image Overlay */
+.leadership-visual .ph-img::after {
+  opacity: 0.5;
+  z-index: 3;
+  pointer-events: none;
+}
+
+
+/* ---------- Premium Slider Buttons ---------- */
+
+.leadership-slider .slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  background: rgba(255, 255, 255, 0.16);
+
+  color: #ffffff;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* Left Button */
+.leadership-slider .slider-prev {
+  left: 18px;
+}
+
+
+/* Right Button */
+.leadership-slider .slider-next {
+  right: 18px;
+}
+
+
+/* Button SVG */
+.leadership-slider .slider-btn svg {
+  width: 21px;
+  height: 21px;
+
+  transition: transform 0.3s ease;
+}
+
+
+/* Hover */
+.leadership-slider .slider-btn:hover {
+  background: var(--plum);
+  color: #ffffff;
+
+  border-color: var(--plum);
+
+  transform: translateY(-50%) scale(1.08);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+
+/* Arrow Hover Animation */
+.leadership-slider .slider-prev:hover svg {
+  transform: translateX(-2px);
+}
+
+.leadership-slider .slider-next:hover svg {
+  transform: translateX(2px);
+}
+
+
+/* Click Effect */
+.leadership-slider .slider-btn:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+
+/* ---------- Slider Dots ---------- */
+
+.leadership-slider .slider-dots {
+  position: absolute;
+
+  left: 50%;
+  bottom: 18px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  z-index: 10;
+}
+
+
+.leadership-slider .slider-dot {
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  cursor: pointer;
+
+  transition:
+    width 0.35s ease,
+    background 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+/* Active Dot */
+.leadership-slider .slider-dot.active {
+  width: 25px;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+
+/* Dot Hover */
+.leadership-slider .slider-dot:hover {
+  transform: scale(1.15);
+}
+
+
+/* ---------- Existing Lockup ---------- */
+
 .leadership-visual .ph-lockup {
   position: absolute;
   inset: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   flex-direction: column;
+
   color: rgba(255,255,255,0.9);
-  z-index: 1;
+
+  z-index: 4;
 }
-.leadership-visual { position: relative; }
+
 .leadership-visual .ph-lockup .lockup-mark {
-  width: 46px; height: 46px;
+  width: 46px;
+  height: 46px;
+
   margin-bottom: 8px;
+
   color: var(--amber);
 }
-.leadership-visual .ph-lockup .lockup-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 0.06em; }
-.leadership-visual .ph-lockup .lockup-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.75; margin-top: 4px; }
 
-.leadership-copy h2 { font-size: clamp(26px, 3vw, 36px); margin-top: 10px; }
-.leadership-copy h2 .accent { color: var(--plum); }
-.leadership-copy .rule { width: 60px; height: 3px; background: var(--amber); margin: 18px 0; border-radius: 2px; }
-.leadership-copy p.lede { color: var(--slate); font-size: 15px; margin-bottom: 22px; max-width: 460px; }
+.leadership-visual .ph-lockup .lockup-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
 
-.check-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px; }
+.leadership-visual .ph-lockup .lockup-tag {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+
+
+/* ---------- Leadership Content ---------- */
+
+.leadership-copy h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  margin-top: 10px;
+}
+
+.leadership-copy h2 .accent {
+  color: var(--plum);
+}
+
+.leadership-copy .rule {
+  width: 60px;
+  height: 3px;
+
+  background: var(--amber);
+
+  margin: 18px 0;
+
+  border-radius: 2px;
+}
+
+.leadership-copy p.lede {
+  color: var(--slate);
+  font-size: 15px;
+  margin-bottom: 22px;
+  max-width: 460px;
+}
+
+
+/* ---------- Checklist ---------- */
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  margin-bottom: 30px;
+}
+
 .check-list li {
   display: flex;
   align-items: flex-start;
+
   gap: 12px;
+
   font-size: 14.5px;
+
   color: var(--ink);
+
   font-weight: 500;
 }
+
 .check-list .tick {
   width: 22px;
   height: 22px;
+
   border-radius: 50%;
+
   background: var(--plum);
+
   color: var(--white);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   flex-shrink: 0;
+
   margin-top: 1px;
 }
-.check-list .tick svg { width: 11px; height: 11px; }
 
+.check-list .tick svg {
+  width: 11px;
+  height: 11px;
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 767px) {
+
+  .leadership-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .leadership-visual .ph-img {
+    aspect-ratio: 16 / 11;
+  }
+
+  .leadership-slider .slider-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .leadership-slider .slider-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .leadership-slider .slider-prev {
+    left: 10px;
+  }
+
+  .leadership-slider .slider-next {
+    right: 10px;
+  }
+
+  .leadership-slider .slider-dots {
+    bottom: 12px;
+  }
+
+}
 /* ---------- Testimonials grid ---------- */
 .testimonials-grid {
   display: grid;
@@ -197,4 +504,344 @@
   .stat-cards { grid-template-columns: repeat(2, 1fr); }
   .values-grid { grid-template-columns: repeat(2, 1fr); }
   .pillar-row { gap: 20px; }
+}
+/* =========================================
+   ABOUT PAGE CTA - GOLD + PURPLE
+   ========================================= */
+
+.section-tight .cta-banner {
+  width: calc(100% - 80px);
+  max-width: 1380px;
+
+  margin: 0px auto 0px;
+  padding: 30px 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+
+  box-sizing: border-box;
+
+  /* GOLD BACKGROUND */
+  background: linear-gradient(
+    120deg,
+    #E5B447,
+    #D9A441
+  ) !important;
+
+  border: 1px solid rgba(75, 29, 110, 0.08);
+  border-radius: 22px;
+
+  box-shadow: 0 12px 30px rgba(75, 29, 110, 0.12);
+}
+
+
+/* LEFT CONTENT */
+
+.section-tight .cta-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+
+/* ICON */
+
+.section-tight .cta-left .cta-icon {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(75, 29, 110, 0.10) !important;
+
+  color: #4B1D6E !important;
+
+  border-radius: 15px;
+}
+
+.section-tight .cta-left .cta-icon svg {
+  width: 25px;
+  height: 25px;
+
+  stroke: #4B1D6E !important;
+}
+
+
+/* HEADING */
+
+.section-tight .cta-left h3 {
+  margin: 0 0 5px;
+
+  color: #4B1D6E !important;
+
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+
+/* DESCRIPTION */
+
+.section-tight .cta-left p {
+  margin: 0;
+
+  color: #4B1D6E !important;
+
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   PURPLE BUTTON
+   ========================================= */
+
+.section-tight .cta-banner .btn.btn-amber {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  flex-shrink: 0;
+
+  padding: 13px 22px;
+
+  min-height: 48px;
+
+  background: #4B1D6E !important;
+
+  color: #FFFFFF !important;
+
+  border: 1px solid #4B1D6E !important;
+
+  border-radius: 28px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  box-shadow: 0 8px 20px rgba(75, 29, 110, 0.22);
+
+  transition: all 0.25s ease;
+}
+
+
+/* BUTTON TEXT */
+
+.section-tight .cta-banner .btn.btn-amber {
+  color: #FFFFFF !important;
+}
+
+
+/* BUTTON ARROW */
+
+.section-tight .cta-banner .btn.btn-amber svg {
+  width: 15px;
+  height: 15px;
+
+  stroke: #FFFFFF !important;
+
+  transition: transform 0.25s ease;
+}
+
+
+/* HOVER */
+
+.section-tight .cta-banner .btn.btn-amber:hover {
+  background: #35134F !important;
+
+  border-color: #35134F !important;
+
+  color: #FFFFFF !important;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 24px rgba(75, 29, 110, 0.28);
+}
+
+.section-tight .cta-banner .btn.btn-amber:hover svg {
+  transform: translateX(3px);
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .section-tight .cta-banner {
+    width: calc(100% - 50px);
+
+    padding: 26px 30px;
+
+    margin-bottom: 40px;
+
+    gap: 25px;
+  }
+
+  .section-tight .cta-left {
+    gap: 13px;
+  }
+
+  .section-tight .cta-left .cta-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+  }
+
+  .section-tight .cta-left h3 {
+    font-size: 19px;
+  }
+
+  .section-tight .cta-left p {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 767px) {
+
+  .section-tight .cta-banner {
+    width: calc(100% - 28px);
+
+    margin: 0 auto 25px;
+
+    padding: 14px 12px;
+
+    gap: 8px;
+
+    border-radius: 14px;
+  }
+
+  .section-tight .cta-left {
+    gap: 8px;
+
+    flex: 1;
+
+    min-width: 0;
+  }
+
+
+  /* SMALL ICON */
+
+  .section-tight .cta-left .cta-icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+
+    border-radius: 9px;
+  }
+
+  .section-tight .cta-left .cta-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  /* SMALL TEXT */
+
+  .section-tight .cta-left h3 {
+    margin-bottom: 2px;
+
+    font-size: 11px;
+
+    line-height: 1.25;
+  }
+
+  .section-tight .cta-left p {
+    font-size: 8px;
+
+    line-height: 1.3;
+  }
+
+
+  /* COMPACT BUTTON */
+
+  .section-tight .cta-banner .btn.btn-amber {
+    padding: 7px 10px;
+
+    min-height: 29px;
+
+    gap: 3px;
+
+    border-radius: 18px;
+
+    font-size: 8px;
+  }
+
+  .section-tight .cta-banner .btn.btn-amber svg {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 400px) {
+
+  .section-tight .cta-banner {
+    width: calc(100% - 20px);
+
+    margin-bottom: 20px;
+
+    padding: 11px 9px;
+
+    gap: 6px;
+  }
+
+  .section-tight .cta-left {
+    gap: 6px;
+  }
+
+  .section-tight .cta-left .cta-icon {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+
+    border-radius: 8px;
+  }
+
+  .section-tight .cta-left .cta-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .section-tight .cta-left h3 {
+    font-size: 9.5px;
+  }
+
+  .section-tight .cta-left p {
+    font-size: 7px;
+  }
+
+  .section-tight .cta-banner .btn.btn-amber {
+    padding: 6px 8px;
+
+    min-height: 25px;
+
+    font-size: 7.5px;
+  }
+
+  .section-tight .cta-banner .btn.btn-amber svg {
+    width: 8px;
+    height: 8px;
+  }
 }

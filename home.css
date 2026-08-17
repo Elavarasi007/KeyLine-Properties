@@ -467,6 +467,130 @@ display: none;
     position:relative;
 }
 
+@media (max-width: 767px) {
+    .hero-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 760px) {
+
+  .cta-banner {
+    width: 100%;
+    min-height: auto !important;
+
+    padding: 14px 12px !important;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 9px;
+
+    border-radius: 14px;
+  }
+
+  /* Small Icon */
+  .cta-banner .cta-icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+
+    border-radius: 9px;
+  }
+
+  .cta-banner .cta-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  /* Content */
+  .cta-banner .cta-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cta-banner h2 {
+    font-size: 15px !important;
+    line-height: 1.15;
+    margin: 0 0 3px !important;
+  }
+
+  .cta-banner p {
+    font-size: 10px !important;
+    line-height: 1.3;
+    margin: 0 !important;
+
+    max-width: 150px;
+  }
+
+  /* Small Button */
+  .cta-banner .btn {
+    flex-shrink: 0;
+
+    padding: 8px 10px !important;
+
+    min-height: 32px !important;
+
+    font-size: 10px !important;
+    line-height: 1;
+
+    border-radius: 16px;
+
+    white-space: nowrap;
+  }
+
+  .cta-banner .btn svg {
+    width: 11px;
+    height: 11px;
+
+    margin-left: 3px;
+  }
+}
+
+
+/* Extra Small Phones */
+@media (max-width: 400px) {
+
+  .cta-banner {
+    padding: 12px 10px !important;
+    gap: 7px;
+    border-radius: 12px;
+  }
+
+  .cta-banner .cta-icon {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 8px;
+  }
+
+  .cta-banner .cta-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .cta-banner h2 {
+    font-size: 13px !important;
+  }
+
+  .cta-banner p {
+    font-size: 9px !important;
+    max-width: 130px;
+  }
+
+  .cta-banner .btn {
+    padding: 7px 9px !important;
+    min-height: 29px !important;
+    font-size: 9px !important;
+  }
+
+  .cta-banner .btn svg {
+    width: 10px;
+    height: 10px;
+  }
+}
+
 .hero-image img{
     width:100%;
     height:100%;
