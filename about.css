@@ -844,4 +844,7 @@
     width: 8px;
     height: 8px;
   }
+  .section-tight{
+    padding: 30px 0 10px !important;
+  }
 }

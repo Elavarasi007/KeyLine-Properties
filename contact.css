@@ -877,95 +877,8 @@ button { font-family: inherit; cursor: pointer; }
 
 }
 
-
 /* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 767px) {
-
-  .cta-banner {
-    width: calc(100% - 28px);
-
-    margin: 0 auto 25px;
-
-    padding: 14px 12px;
-
-    gap: 8px;
-
-    border-radius: 14px;
-  }
-
-  .cta-left {
-    gap: 8px;
-
-    flex: 1;
-
-    min-width: 0;
-  }
-
-
-  /* Small icon */
-
-  .cta-icon {
-    width: 34px;
-    height: 34px;
-
-    min-width: 34px;
-
-    border-radius: 9px;
-  }
-
-  .cta-icon svg {
-    width: 16px;
-    height: 16px;
-  }
-
-
-  /* Small heading */
-
-  .cta-left h3 {
-    margin: 0 0 2px;
-
-    font-size: 11px;
-
-    line-height: 1.25;
-  }
-
-
-  /* Small paragraph */
-
-  .cta-left p {
-    font-size: 8px;
-
-    line-height: 1.3;
-  }
-
-
-  /* Compact button */
-
-  .cta-banner .cta-btn {
-    padding: 7px 9px;
-
-    min-height: 28px;
-
-    gap: 3px;
-
-    border-radius: 18px;
-
-    font-size: 8px;
-  }
-
-  .cta-banner .cta-btn svg {
-    width: 9px;
-    height: 9px;
-  }
-
-}
-
-
-/* =========================================
-   VERY SMALL MOBILE
+   VERY SMALL MOBILE - FINAL
    ========================================= */
 
 @media (max-width: 400px) {
@@ -973,52 +886,302 @@ button { font-family: inherit; cursor: pointer; }
   .cta-banner {
     width: calc(100% - 20px);
 
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
 
-    padding: 11px 9px;
+    padding: 12px 10px;
 
-    gap: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    border-radius: 12px;
+    gap: 8px;
+
+    border-radius: 13px;
   }
+
+
+  /* LEFT CONTENT */
 
   .cta-left {
-    gap: 6px;
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    flex: 1;
+    min-width: 0;
   }
 
-  .cta-icon {
-    width: 30px;
-    height: 30px;
 
-    min-width: 30px;
+  /* ICON */
+
+  .cta-icon {
+    width: 32px;
+    height: 32px;
+
+    min-width: 32px;
 
     border-radius: 8px;
   }
 
   .cta-icon svg {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
   }
 
+
+  /* TEXT */
+
   .cta-left h3 {
-    font-size: 9.5px;
+    margin: 0 0 3px;
+
+    font-size: 10.5px;
+
+    line-height: 1.25;
+
+    white-space: normal;
   }
 
   .cta-left p {
-    font-size: 7px;
+    margin: 0;
+
+    font-size: 8px;
+
+    line-height: 1.3;
+
+    white-space: normal;
   }
 
+
+  /* BUTTON */
+
+  .cta-banner .cta-btn,
+  .cta-banner .btn.btn-amber {
+    flex-shrink: 0;
+
+    padding: 7px 9px;
+
+    min-height: 27px;
+
+    gap: 3px;
+
+    border-radius: 17px;
+
+    font-size: 8px;
+
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+
+  .cta-banner .cta-btn svg,
+  .cta-banner .btn.btn-amber svg {
+    width: 9px;
+    height: 9px;
+  }
+
+}
+
+/* =========================================
+   CTA BANNER - PERFECT MOBILE VIEW
+   ========================================= */
+
+@media (max-width: 767px) {
+
+  .cta-banner {
+    width: calc(100% - 24px) !important;
+    margin: 0 auto 20px !important;
+
+    padding: 14px 12px !important;
+
+    box-sizing: border-box;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+  }
+
+  /* MAIN INNER ROW */
+  .cta-banner .cta-inner {
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 8px !important;
+  }
+
+
+  /* =========================================
+     LEFT SIDE
+     ========================================= */
+
+  .cta-banner .cta-left {
+    display: flex !important;
+
+    flex-direction: row !important;
+    align-items: center !important;
+
+    gap: 7px !important;
+
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+
+
+  /* ICON */
+
+  .cta-banner .cta-icon {
+    width: 30px !important;
+    height: 30px !important;
+
+    min-width: 30px !important;
+
+    flex-shrink: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 8px !important;
+  }
+
+  .cta-banner .cta-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+
+  /* TEXT */
+
+  .cta-banner .cta-left > div {
+    min-width: 0 !important;
+    flex: 1 !important;
+  }
+
+  .cta-banner .cta-left h3 {
+    margin: 0 0 3px !important;
+
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+
+    font-weight: 700 !important;
+
+    white-space: normal !important;
+  }
+
+  .cta-banner .cta-left p {
+    margin: 0 !important;
+
+    font-size: 7.5px !important;
+    line-height: 1.25 !important;
+
+    white-space: normal !important;
+  }
+
+
+  /* =========================================
+     RIGHT BUTTON
+     ========================================= */
+
   .cta-banner .cta-btn {
-    padding: 6px 8px;
+    display: inline-flex !important;
 
-    min-height: 25px;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
 
-    font-size: 7.5px;
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+
+    width: auto !important;
+
+    min-width: 64px !important;
+    min-height: 27px !important;
+
+    padding: 7px 9px !important;
+
+    margin: 0 !important;
+
+    border-radius: 18px !important;
+
+    font-size: 7.5px !important;
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+
+    gap: 3px !important;
+
+    box-sizing: border-box;
   }
 
   .cta-banner .cta-btn svg {
-    width: 8px;
-    height: 8px;
+    width: 8px !important;
+    height: 8px !important;
+
+    flex-shrink: 0 !important;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
+
+@media (max-width: 360px) {
+
+  .cta-banner {
+    width: calc(100% - 20px) !important;
+
+    padding: 12px 10px !important;
+
+    border-radius: 13px;
   }
 
+  .cta-banner .cta-inner {
+    gap: 6px !important;
+  }
+
+  .cta-banner .cta-left {
+    gap: 6px !important;
+  }
+
+  .cta-banner .cta-icon {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+  }
+
+  .cta-banner .cta-icon svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  .cta-banner .cta-left h3 {
+    font-size: 9px !important;
+  }
+
+  .cta-banner .cta-left p {
+    font-size: 7px !important;
+  }
+
+  .cta-banner .cta-btn {
+    min-width: 60px !important;
+
+    padding: 6px 7px !important;
+
+    font-size: 7px !important;
+  }
+
+  .cta-banner .cta-btn svg {
+    width: 7px !important;
+    height: 7px !important;
+  }
 }
